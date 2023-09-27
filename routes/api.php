@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::name('projects.')
-    ->prefix('project')
+    ->prefix('projects')
     ->group(function () {
 
         Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

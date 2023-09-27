@@ -12,13 +12,13 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::paginate(3);
+        $projects = Project::with('type', 'technologies')->paginate(10);
 
         return response()->json([
             'success' => true,
             'code' => 200,
             'message' => 'OK',
-            'projects' => $projects
+            'results' => $projects
         ]);
     }
 
@@ -31,12 +31,12 @@ class ProjectController extends Controller
                 'success' => true,
                 'code' => 200,
                 'message' => 'OK',
-                'projects' => $project
+                'results' => $project
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'result' => 'Not found'
+                'results' => 'Not found'
             ]);
         }
     }
